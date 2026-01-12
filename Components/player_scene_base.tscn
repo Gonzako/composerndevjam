@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdf8kk62a3ib0"]
+
+[ext_resource type="Texture2D" uid="uid://cf7w1jq76t4p7" path="res://icon.svg" id="1_0flpj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ggyil"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xt181"]
+blend_mode = 1
+
+[node name="PlayerParent" type="Node2D"]
+editor_description = "Parent object that holds player objects that dont follow the player"
+
+[node name="PlayerLogic" type="CharacterBody2D" parent="."]
+position = Vector2(0, -15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerLogic"]
+shape = SubResource("CapsuleShape2D_ggyil")
+
+[node name="PlayerVisuals" type="Node2D" parent="PlayerLogic"]
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerLogic/PlayerVisuals"]
+material = SubResource("CanvasItemMaterial_xt181")
+position = Vector2(-7.1525574e-07, -0.49999976)
+scale = Vector2(0.21875001, 0.32031247)
+texture = ExtResource("1_0flpj")
