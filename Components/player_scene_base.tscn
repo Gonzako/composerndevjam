@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdf8kk62a3ib0"]
+[gd_scene load_steps=5 format=3 uid="uid://bdf8kk62a3ib0"]
 
 [ext_resource type="Texture2D" uid="uid://cf7w1jq76t4p7" path="res://icon.svg" id="1_0flpj"]
+[ext_resource type="Script" uid="uid://jb8cyklju0ve" path="res://Scripts/player_logic.gd" id="1_xt181"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ggyil"]
 
@@ -12,6 +13,7 @@ editor_description = "Parent object that holds player objects that dont follow t
 
 [node name="PlayerLogic" type="CharacterBody2D" parent="."]
 position = Vector2(0, -15)
+script = ExtResource("1_xt181")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerLogic"]
 shape = SubResource("CapsuleShape2D_ggyil")
