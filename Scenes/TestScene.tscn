@@ -18,25 +18,26 @@ normal = Vector2(0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(3, 1)
+limit_left = -10000050
 
 [node name="Bounds" type="Node2D" parent="Camera2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Camera2D/Bounds"]
 
 [node name="North" type="CollisionShape2D" parent="Camera2D/Bounds/StaticBody2D"]
-position = Vector2(7, -304)
+position = Vector2(0, -500)
 shape = SubResource("WorldBoundaryShape2D_5lt6y")
 
 [node name="South" type="CollisionShape2D" parent="Camera2D/Bounds/StaticBody2D"]
-position = Vector2(-3, 301)
+position = Vector2(0, 500)
 shape = SubResource("WorldBoundaryShape2D_8k7wh")
 
 [node name="East" type="CollisionShape2D" parent="Camera2D/Bounds/StaticBody2D"]
-position = Vector2(541, 0)
+position = Vector2(280, 0)
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_iufkg")
 
 [node name="West" type="CollisionShape2D" parent="Camera2D/Bounds/StaticBody2D"]
-position = Vector2(-550, -6)
+position = Vector2(-280, 0)
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_b5ayd")
