@@ -10,8 +10,6 @@ gravity_scale = -1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7m5rk")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 scale = Vector2(20, 20)
 mesh = SubResource("BoxMesh_7m5rk")
