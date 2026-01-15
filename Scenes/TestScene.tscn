@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://drb074v081kkw"]
+[gd_scene load_steps=12 format=3 uid="uid://drb074v081kkw"]
 
 [ext_resource type="PackedScene" uid="uid://bdf8kk62a3ib0" path="res://Components/player_scene_base.tscn" id="1_b5ayd"]
+[ext_resource type="AudioStream" uid="uid://b2pqqkyq1jt36" path="res://GALAGA-BGM-LongRoadAhead+HardHabitToBreak.mp3" id="2_5lt6y"]
+[ext_resource type="Script" uid="uid://bhi5207kom6gu" path="res://Scripts/play_self_on_load.gd" id="3_8k7wh"]
+[ext_resource type="Script" uid="uid://y1sop7jwvbia" path="res://Scripts/level_spawning.gd" id="4_iufkg"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5lt6y"]
 normal = Vector2(0, 1)
@@ -11,6 +14,59 @@ normal = Vector2(0, 1)
 normal = Vector2(0, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5ayd"]
+
+[sub_resource type="Animation" id="Animation_5lt6y"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_8k7wh"]
+resource_name = "Test_Level"
+loop_mode = 1
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TestLevel/LevelMusic")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 48.144356,
+"start_offset": 0.5666667,
+"stream": ExtResource("2_5lt6y")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TestLevel/ObstacleSpawner")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0, 0, true],
+"method": &"SpawnObstacle"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TestLevel/ObstacleSpawner")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iufkg"]
+_data = {
+&"RESET": SubResource("Animation_5lt6y"),
+&"Test_Level": SubResource("Animation_8k7wh")
+}
 
 [node name="TestScene" type="Node2D"]
 
@@ -41,3 +97,29 @@ shape = SubResource("WorldBoundaryShape2D_iufkg")
 position = Vector2(-280, 0)
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_b5ayd")
+
+[node name="TestLevel" type="AnimationPlayer" parent="."]
+deterministic = true
+libraries = {
+&"": SubResource("AnimationLibrary_iufkg")
+}
+script = ExtResource("3_8k7wh")
+
+[node name="LevelMusic" type="AudioStreamPlayer" parent="TestLevel"]
+
+[node name="ObstacleSpawner" type="Node2D" parent="TestLevel" node_paths=PackedStringArray("bottomNode", "topNode", "spawnParent")]
+script = ExtResource("4_iufkg")
+obstacle = Array[Node]([null])
+bottomNode = NodePath("ReferencePoints/BottomPoint")
+topNode = NodePath("ReferencePoints/TopPoint")
+spawnParent = NodePath("../SpawnParent")
+
+[node name="ReferencePoints" type="Node2D" parent="TestLevel/ObstacleSpawner"]
+
+[node name="BottomPoint" type="Node2D" parent="TestLevel/ObstacleSpawner/ReferencePoints"]
+position = Vector2(0, 500)
+
+[node name="TopPoint" type="Node2D" parent="TestLevel/ObstacleSpawner/ReferencePoints"]
+position = Vector2(0, -500)
+
+[node name="SpawnParent" type="Node2D" parent="TestLevel"]
