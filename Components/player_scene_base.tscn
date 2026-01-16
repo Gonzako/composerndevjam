@@ -1,12 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://bdf8kk62a3ib0"]
+[gd_scene load_steps=22 format=3 uid="uid://bdf8kk62a3ib0"]
 
 [ext_resource type="Script" uid="uid://jb8cyklju0ve" path="res://Scripts/player_logic.gd" id="1_xt181"]
 [ext_resource type="Texture2D" uid="uid://bayokgygxcp2h" path="res://sprites/character1.png" id="2_xt181"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ggyil"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xt181"]
-blend_mode = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f10aw"]
 atlas = ExtResource("2_xt181")
@@ -106,6 +103,62 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_tpbpu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerLogic/PlayerVisuals/Sprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerLogic/PlayerVisuals/Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_sgt1x"]
+resource_name = "down"
+length = 0.33333668
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerLogic/PlayerVisuals/Sprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"down"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerLogic/PlayerVisuals/Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
 [sub_resource type="Animation" id="Animation_kwtnf"]
 resource_name = "idle"
 length = 0.33333668
@@ -133,33 +186,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
-}
-
-[sub_resource type="Animation" id="Animation_tpbpu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerLogic/PlayerVisuals/Sprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"default"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerLogic/PlayerVisuals/Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_pjeht"]
@@ -206,35 +232,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"right"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerLogic/PlayerVisuals/Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.16666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-
-[sub_resource type="Animation" id="Animation_sgt1x"]
-resource_name = "down"
-length = 0.33333668
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerLogic/PlayerVisuals/Sprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"down"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -302,7 +299,6 @@ shape = SubResource("CapsuleShape2D_ggyil")
 [node name="PlayerVisuals" type="Node2D" parent="PlayerLogic"]
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="PlayerLogic/PlayerVisuals"]
-material = SubResource("CanvasItemMaterial_xt181")
 position = Vector2(0, 1)
 scale = Vector2(0.06718383, 0.06718383)
 sprite_frames = SubResource("SpriteFrames_fc0id")

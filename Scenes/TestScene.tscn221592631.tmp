@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://drb074v081kkw"]
 
-[ext_resource type="PackedScene" uid="uid://sdg8fd6qs437" path="res://Components/background.tscn" id="1_0f5h7"]
+[ext_resource type="Texture2D" uid="uid://cb2os1ijkrlss" path="res://sprites/background/Paint Layer 28 Merged.PNG" id="1_0f5h7"]
 [ext_resource type="PackedScene" uid="uid://bdf8kk62a3ib0" path="res://Components/player_scene_base.tscn" id="1_b5ayd"]
 [ext_resource type="AudioStream" uid="uid://b2pqqkyq1jt36" path="res://GALAGA-BGM-LongRoadAhead+HardHabitToBreak.mp3" id="2_5lt6y"]
 [ext_resource type="Script" uid="uid://bhi5207kom6gu" path="res://Scripts/play_self_on_load.gd" id="3_8k7wh"]
@@ -24,7 +24,7 @@ resource_name = "Test_Level"
 loop_mode = 1
 tracks/0/type = "audio"
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("TestLevel/LevelMusic")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -71,7 +71,10 @@ _data = {
 
 [node name="TestScene" type="Node2D"]
 
-[node name="Background" parent="." instance=ExtResource("1_0f5h7")]
+[node name="PaintLayer28Merged" type="Sprite2D" parent="."]
+position = Vector2(2, 2.000021)
+scale = Vector2(0.362, 0.35666665)
+texture = ExtResource("1_0f5h7")
 
 [node name="PlayerParent" parent="." instance=ExtResource("1_b5ayd")]
 
