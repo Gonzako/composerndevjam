@@ -5,6 +5,8 @@
 [sub_resource type="BoxMesh" id="BoxMesh_7m5rk"]
 
 [node name="TestObstacle" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
 gravity_scale = -1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

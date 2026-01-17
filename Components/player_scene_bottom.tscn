@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4437hxfpfhaq"]
+
+[ext_resource type="PackedScene" uid="uid://bdf8kk62a3ib0" path="res://Components/player_scene_base.tscn" id="1_3w4a5"]
+
+[node name="PlayerParent" instance=ExtResource("1_3w4a5")]
+
+[node name="PlayerLogic" parent="." index="0"]
+collision_layer = 5
+collision_mask = 5
+move_axis = ["p2_left", "p2_right", "p2_up", "p2_down"]
+
+[node name="Sprite2D" parent="PlayerLogic/PlayerVisuals" index="0"]
+self_modulate = Color(0.45854163, 0.59151804, 0.10296922, 1)

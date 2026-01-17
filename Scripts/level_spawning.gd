@@ -7,7 +7,7 @@ extends Node2D
 
 func SpawnObstacle(pos_offset: float, obs_idx: int, from_bottom = true) -> void:
 	print("Hello world")
-	#var target_obstacle = obstacle[obs_idx].instantiate()
-	#target_obstacle.position = bottomNode.position
-	#target_obstacle.position.x += pos_offset
-	#spawnParent.add_child(target_obstacle)
+	var target_obstacle = obstacle[obs_idx].instantiate()
+	target_obstacle.position = bottomNode.position
+	target_obstacle.position.x += pos_offset
+	spawnParent.add_child(target_obstacle)

@@ -290,6 +290,8 @@ editor_description = "Parent object that holds player objects that dont follow t
 
 [node name="PlayerLogic" type="CharacterBody2D" parent="." node_paths=PackedStringArray("animation_player")]
 position = Vector2(0, -15)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_xt181")
 animation_player = NodePath("../AnimationPlayer")
 
