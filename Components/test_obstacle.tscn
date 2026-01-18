@@ -1,8 +1,134 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqgcj66pt608p"]
+[gd_scene load_steps=22 format=3 uid="uid://dqgcj66pt608p"]
+
+[ext_resource type="Texture2D" uid="uid://b4yoadbu72lmn" path="res://sprites/obstacles/spinner.png" id="1_gb200"]
+[ext_resource type="Texture2D" uid="uid://pi1kcsl11u66" path="res://sprites/obstacles/bird.png" id="1_v43hn"]
+[ext_resource type="Texture2D" uid="uid://dklsi5qwfrao0" path="res://sprites/obstacles/brick.png.png" id="2_p518p"]
+[ext_resource type="Texture2D" uid="uid://bs8hxeafospcd" path="res://sprites/obstacles/broke.png" id="3_75566"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7m5rk"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7m5rk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75566"]
+atlas = ExtResource("1_v43hn")
+region = Rect2(0, 0, 408, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgec3"]
+atlas = ExtResource("1_v43hn")
+region = Rect2(408, 0, 408, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1grma"]
+atlas = ExtResource("1_v43hn")
+region = Rect2(816, 0, 408, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70mew"]
+atlas = ExtResource("2_p518p")
+region = Rect2(0, 0, 310, 306)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rar5y"]
+atlas = ExtResource("2_p518p")
+region = Rect2(310, 0, 310, 306)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ru8ff"]
+atlas = ExtResource("2_p518p")
+region = Rect2(620, 0, 310, 306)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xdq8"]
+atlas = ExtResource("3_75566")
+region = Rect2(0, 0, 456, 398)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jyfc"]
+atlas = ExtResource("3_75566")
+region = Rect2(456, 0, 456, 398)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qwip"]
+atlas = ExtResource("3_75566")
+region = Rect2(912, 0, 456, 398)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd1vf"]
+atlas = ExtResource("3_75566")
+region = Rect2(0, 398, 456, 398)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmt83"]
+atlas = ExtResource("3_75566")
+region = Rect2(456, 398, 456, 398)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v43hn"]
+atlas = ExtResource("1_gb200")
+region = Rect2(0, 0, 350, 260)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmle5"]
+atlas = ExtResource("1_gb200")
+region = Rect2(350, 0, 350, 260)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p518p"]
+atlas = ExtResource("1_gb200")
+region = Rect2(700, 0, 350, 260)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_75566"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75566")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgec3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1grma")
+}],
+"loop": true,
+"name": &"bird",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70mew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rar5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ru8ff")
+}],
+"loop": true,
+"name": &"brick",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xdq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jyfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qwip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dd1vf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmt83")
+}],
+"loop": true,
+"name": &"broke",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v43hn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmle5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p518p")
+}],
+"loop": true,
+"name": &"spinner",
+"speed": 15.0
+}]
 
 [node name="TestObstacle" type="RigidBody2D"]
 collision_layer = 2
@@ -18,3 +144,11 @@ mesh = SubResource("BoxMesh_7m5rk")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 editor_description = "This might need to be changed to a notifier"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1.1920929e-07)
+scale = Vector2(0.08664835, 0.10486264)
+sprite_frames = SubResource("SpriteFrames_75566")
+animation = &"broke"
+autoplay = "broke"
+frame_progress = 0.738188

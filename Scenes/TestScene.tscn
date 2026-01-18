@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bdf8kk62a3ib0" path="res://Components/player_scene_base.tscn" id="1_b5ayd"]
 [ext_resource type="AudioStream" uid="uid://b2pqqkyq1jt36" path="res://GALAGA-BGM-LongRoadAhead+HardHabitToBreak.mp3" id="2_5lt6y"]
 [ext_resource type="PackedScene" uid="uid://b4437hxfpfhaq" path="res://Components/player_scene_bottom.tscn" id="2_c264a"]
-[ext_resource type="Script" path="res://Scripts/play_self_on_load.gd" id="3_8k7wh"]
+[ext_resource type="Script" uid="uid://bhi5207kom6gu" path="res://Scripts/play_self_on_load.gd" id="3_8k7wh"]
 [ext_resource type="Script" uid="uid://y1sop7jwvbia" path="res://Scripts/level_spawning.gd" id="4_iufkg"]
 [ext_resource type="PackedScene" uid="uid://dqgcj66pt608p" path="res://Components/test_obstacle.tscn" id="6_qsjrb"]
 

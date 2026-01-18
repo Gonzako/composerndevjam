@@ -1,7 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://bdf8kk62a3ib0"]
+[gd_scene load_steps=24 format=3 uid="uid://bdf8kk62a3ib0"]
 
 [ext_resource type="Script" uid="uid://jb8cyklju0ve" path="res://Scripts/player_logic.gd" id="1_xt181"]
 [ext_resource type="Texture2D" uid="uid://bayokgygxcp2h" path="res://sprites/character1.png" id="2_xt181"]
+[ext_resource type="Script" uid="uid://lx7n7oou575r" path="res://Scripts/trail.gd" id="3_f10aw"]
+[ext_resource type="Script" uid="uid://qiq20tin6iua" path="res://Scripts/sprite_fade.gd" id="3_h71q8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ggyil"]
 
@@ -108,7 +110,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerLogic/PlayerVisuals/Sprite2D:animation")
+tracks/0/path = NodePath("PlayerLogic/PlayerVisuals/AnimatedSprite2D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -120,7 +122,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerLogic/PlayerVisuals/Sprite2D:frame")
+tracks/1/path = NodePath("PlayerLogic/PlayerVisuals/AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -137,7 +139,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerLogic/PlayerVisuals/Sprite2D:animation")
+tracks/0/path = NodePath("PlayerLogic/PlayerVisuals/AnimatedSprite2D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -149,7 +151,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerLogic/PlayerVisuals/Sprite2D:frame")
+tracks/1/path = NodePath("PlayerLogic/PlayerVisuals/AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -166,7 +168,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerLogic/PlayerVisuals/Sprite2D:animation")
+tracks/0/path = NodePath("PlayerLogic/PlayerVisuals/AnimatedSprite2D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -178,7 +180,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerLogic/PlayerVisuals/Sprite2D:frame")
+tracks/1/path = NodePath("PlayerLogic/PlayerVisuals/AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -195,7 +197,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerLogic/PlayerVisuals/Sprite2D:animation")
+tracks/0/path = NodePath("PlayerLogic/PlayerVisuals/AnimatedSprite2D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -207,7 +209,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerLogic/PlayerVisuals/Sprite2D:frame")
+tracks/1/path = NodePath("PlayerLogic/PlayerVisuals/AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -224,7 +226,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerLogic/PlayerVisuals/Sprite2D:animation")
+tracks/0/path = NodePath("PlayerLogic/PlayerVisuals/AnimatedSprite2D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -236,7 +238,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerLogic/PlayerVisuals/Sprite2D:frame")
+tracks/1/path = NodePath("PlayerLogic/PlayerVisuals/AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -253,7 +255,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerLogic/PlayerVisuals/Sprite2D:animation")
+tracks/0/path = NodePath("PlayerLogic/PlayerVisuals/AnimatedSprite2D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -265,7 +267,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerLogic/PlayerVisuals/Sprite2D:frame")
+tracks/1/path = NodePath("PlayerLogic/PlayerVisuals/AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -300,10 +302,15 @@ shape = SubResource("CapsuleShape2D_ggyil")
 
 [node name="PlayerVisuals" type="Node2D" parent="PlayerLogic"]
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="PlayerLogic/PlayerVisuals"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerLogic/PlayerVisuals"]
 position = Vector2(0, 1)
 scale = Vector2(0.06718383, 0.06718383)
 sprite_frames = SubResource("SpriteFrames_fc0id")
+script = ExtResource("3_h71q8")
+
+[node name="Trail" type="Node" parent="PlayerLogic/PlayerVisuals" node_paths=PackedStringArray("origin")]
+script = ExtResource("3_f10aw")
+origin = NodePath("../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
