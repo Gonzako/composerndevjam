@@ -6,8 +6,11 @@ const JUMP_VELOCITY = -400.0
 @export var move_axis = ["ui_left","ui_right","ui_up","ui_down"]
 @export var animation_player: AnimationPlayer
 var move_animations = ["left", "right", "up", "down"]
+var ded = false
 
 func _physics_process(_delta: float) -> void:
+	if ded:
+		return
 	if Input.is_action_just_pressed("ui_accept"):
 		#Shoot logic
 		print("test")
@@ -30,5 +33,6 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func get_reckt() -> void:
+	ded = true
 	print("Player died as " + owner.name)
 	animation_player.play("death")
