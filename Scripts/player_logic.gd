@@ -28,3 +28,7 @@ func _physics_process(_delta: float) -> void:
 		animation_player.play("idle")
 
 	move_and_slide()
+
+func get_reckt() -> void:
+	print("Player died as " + owner.name)
+	animation_player.play("death")

@@ -1,5 +1,6 @@
-[gd_scene load_steps=22 format=3 uid="uid://dqgcj66pt608p"]
+[gd_scene load_steps=23 format=3 uid="uid://dqgcj66pt608p"]
 
+[ext_resource type="Script" uid="uid://g3vohi241tep" path="res://Scripts/obstacle_logic.gd" id="1_75566"]
 [ext_resource type="Texture2D" uid="uid://b4yoadbu72lmn" path="res://sprites/obstacles/spinner.png" id="1_gb200"]
 [ext_resource type="Texture2D" uid="uid://pi1kcsl11u66" path="res://sprites/obstacles/bird.png" id="1_v43hn"]
 [ext_resource type="Texture2D" uid="uid://dklsi5qwfrao0" path="res://sprites/obstacles/brick.png.png" id="2_p518p"]
@@ -134,11 +135,15 @@ animations = [{
 collision_layer = 2
 collision_mask = 2
 gravity_scale = -1.0
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_75566")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7m5rk")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+visible = false
 scale = Vector2(20, 20)
 mesh = SubResource("BoxMesh_7m5rk")
 
@@ -152,3 +157,5 @@ sprite_frames = SubResource("SpriteFrames_75566")
 animation = &"broke"
 autoplay = "broke"
 frame_progress = 0.738188
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
