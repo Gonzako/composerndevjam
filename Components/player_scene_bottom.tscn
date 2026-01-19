@@ -9,5 +9,18 @@ collision_layer = 5
 collision_mask = 5
 move_axis = ["p2_left", "p2_right", "p2_up", "p2_down"]
 
-[node name="Trail" parent="PlayerLogic/PlayerVisuals" index="1"]
-rotation = 180
+[node name="Wings" parent="PlayerLogic/PlayerVisuals" index="0"]
+visible = true
+position = Vector2(0, -10)
+
+[node name="AnimatedSprite2D2" parent="PlayerLogic/PlayerVisuals" index="1"]
+visible = true
+position = Vector2(2.3841858e-07, -1.0000005)
+scale = Vector2(0.061972044, 0.06197205)
+
+[node name="AnimatedSprite2D" parent="PlayerLogic/PlayerVisuals" index="2"]
+visible = false
+
+[node name="Trail" parent="PlayerLogic/PlayerVisuals" index="3" node_paths=PackedStringArray("override_animated_sprite")]
+rotation = 270
+override_animated_sprite = NodePath("../AnimatedSprite2D2")

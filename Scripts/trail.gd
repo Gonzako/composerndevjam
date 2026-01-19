@@ -4,6 +4,12 @@ extends Node
 @export var rotation: int = 0
 @export var origin: Node2D
 
+@export var override_animated_sprite: AnimatedSprite2D
+
+func _ready():
+	if override_animated_sprite:
+		animated_sprite_2d = override_animated_sprite
+
 func _process(_delta):
 	if (get_tree().get_frame() % 5 == 0):
 		var newsprite: AnimatedSprite2D = animated_sprite_2d.duplicate()
