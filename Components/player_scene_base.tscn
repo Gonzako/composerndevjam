@@ -130,6 +130,8 @@ lifetime_randomness = 1.0
 particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 1.0
+velocity_pivot = Vector3(0, 5, 0)
+direction = Vector3(0, 1, 0)
 spread = 180.0
 initial_velocity_min = 50.7
 initial_velocity_max = 60.699997
@@ -419,14 +421,13 @@ script = ExtResource("3_f10aw")
 origin = NodePath("../..")
 
 [node name="LoseParticles" type="GPUParticles2D" parent="PlayerLogic/PlayerVisuals"]
-top_level = true
 material = SubResource("CanvasItemMaterial_sjwo0")
-position = Vector2(-3, -8)
+position = Vector2(0, -15)
 emitting = false
 texture = SubResource("AnimatedTexture_tok6t")
 lifetime = 3.0
-one_shot = true
 explosiveness = 1.0
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_5yr4r")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

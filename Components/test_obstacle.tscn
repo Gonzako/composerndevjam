@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://dqgcj66pt608p"]
 
-[ext_resource type="Script" uid="uid://g3vohi241tep" path="res://Scripts/obstacle_logic.gd" id="1_75566"]
+[ext_resource type="Script" path="res://Scripts/obstacle_logic.gd" id="1_75566"]
 [ext_resource type="Texture2D" uid="uid://b4yoadbu72lmn" path="res://sprites/obstacles/spinner.png" id="1_gb200"]
 [ext_resource type="Texture2D" uid="uid://pi1kcsl11u66" path="res://sprites/obstacles/bird.png" id="1_v43hn"]
 [ext_resource type="Texture2D" uid="uid://dklsi5qwfrao0" path="res://sprites/obstacles/brick.png.png" id="2_p518p"]

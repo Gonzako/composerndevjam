@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=3 uid="uid://drb074v081kkw"]
 
-[ext_resource type="PackedScene" path="res://Components/background.tscn" id="1_0f5h7"]
+[ext_resource type="PackedScene" uid="uid://sdg8fd6qs437" path="res://Components/background.tscn" id="1_0f5h7"]
 [ext_resource type="PackedScene" uid="uid://bdf8kk62a3ib0" path="res://Components/player_scene_base.tscn" id="1_b5ayd"]
 [ext_resource type="AudioStream" uid="uid://b2pqqkyq1jt36" path="res://GALAGA-BGM-LongRoadAhead+HardHabitToBreak.mp3" id="2_5lt6y"]
-[ext_resource type="PackedScene" path="res://Components/player_scene_bottom.tscn" id="2_c264a"]
-[ext_resource type="Script" uid="uid://bhi5207kom6gu" path="res://Scripts/play_self_on_load.gd" id="3_8k7wh"]
+[ext_resource type="PackedScene" uid="uid://b4437hxfpfhaq" path="res://Components/player_scene_bottom.tscn" id="2_c264a"]
+[ext_resource type="Script" path="res://Scripts/play_self_on_load.gd" id="3_8k7wh"]
 [ext_resource type="Script" uid="uid://y1sop7jwvbia" path="res://Scripts/level_spawning.gd" id="4_iufkg"]
 [ext_resource type="PackedScene" uid="uid://dqgcj66pt608p" path="res://Components/test_obstacle.tscn" id="6_qsjrb"]
 
@@ -82,11 +82,11 @@ _data = {
 [node name="Background" parent="." instance=ExtResource("1_0f5h7")]
 
 [node name="PlayerParent" parent="." instance=ExtResource("2_c264a")]
-position = Vector2(-2, 80)
+position = Vector2(0, 83)
 rotation = 3.1415927
 
 [node name="PlayerTop" parent="." instance=ExtResource("1_b5ayd")]
-position = Vector2(0, -107)
+position = Vector2(1, -113)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(3, 1)
