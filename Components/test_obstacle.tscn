@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://dqgcj66pt608p"]
 
-[ext_resource type="Script" path="res://Scripts/obstacle_logic.gd" id="1_75566"]
+[ext_resource type="Script" uid="uid://g3vohi241tep" path="res://Scripts/obstacle_logic.gd" id="1_75566"]
 [ext_resource type="Texture2D" uid="uid://b4yoadbu72lmn" path="res://sprites/obstacles/spinner.png" id="1_gb200"]
 [ext_resource type="Texture2D" uid="uid://pi1kcsl11u66" path="res://sprites/obstacles/bird.png" id="1_v43hn"]
 [ext_resource type="Texture2D" uid="uid://dklsi5qwfrao0" path="res://sprites/obstacles/brick.png.png" id="2_p518p"]
@@ -154,8 +154,7 @@ editor_description = "This might need to be changed to a notifier"
 position = Vector2(0, -1.1920929e-07)
 scale = Vector2(0.08664835, 0.10486264)
 sprite_frames = SubResource("SpriteFrames_75566")
-animation = &"broke"
+animation = &"bird"
 autoplay = "broke"
-frame_progress = 0.738188
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

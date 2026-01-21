@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://drb074v081kkw"]
+[gd_scene load_steps=17 format=3 uid="uid://drb074v081kkw"]
 
 [ext_resource type="PackedScene" uid="uid://sdg8fd6qs437" path="res://Components/background.tscn" id="1_0f5h7"]
 [ext_resource type="PackedScene" uid="uid://bdf8kk62a3ib0" path="res://Components/player_scene_base.tscn" id="1_b5ayd"]
@@ -55,26 +55,38 @@ tracks/1/keys = {
 "args": [0.0, 0, true],
 "method": &"SpawnObstacle"
 }, {
-"args": [-100.0, 0, true],
+"args": [-100.0, 0, false],
 "method": &"SpawnObstacle"
 }]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TestLevel/ObstacleSpawner")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iufkg"]
 _data = {
 &"RESET": SubResource("Animation_5lt6y"),
 &"Test_Level": SubResource("Animation_8k7wh")
+}
+
+[sub_resource type="Animation" id="Animation_c264a"]
+resource_name = "Test_Level"
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ObstacleSpawner")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"SpawnRandomObstacle"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6xh1p"]
+_data = {
+&"Test_Level": SubResource("Animation_c264a")
 }
 
 [node name="TestScene" type="Node2D"]
@@ -119,6 +131,12 @@ libraries = {
 &"": SubResource("AnimationLibrary_iufkg")
 }
 script = ExtResource("3_8k7wh")
+
+[node name="Spawner" type="AnimationPlayer" parent="TestLevel"]
+libraries = {
+&"": SubResource("AnimationLibrary_6xh1p")
+}
+autoplay = "Test_Level"
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="TestLevel"]
 

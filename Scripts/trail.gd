@@ -10,7 +10,7 @@ func _ready():
 	if override_animated_sprite:
 		animated_sprite_2d = override_animated_sprite
 
-func _process(_delta):
+func _physics_process(_delta):
 	if (get_tree().get_frame() % 5 == 0):
 		var newsprite: AnimatedSprite2D = animated_sprite_2d.duplicate()
 		newsprite.stop()

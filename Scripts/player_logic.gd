@@ -35,6 +35,6 @@ func _physics_process(_delta: float) -> void:
 func get_reckt() -> void:
 	ded = true
 	var col = find_child("CollisionShape2D")
-	col.disabled = true
+	set_deferred("col.disabled", true)
 	print("Player died as " + owner.name)
 	animation_player.play("death")
