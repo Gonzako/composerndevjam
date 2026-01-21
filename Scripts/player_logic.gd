@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
-
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 @export var move_axis = ["ui_left","ui_right","ui_up","ui_down"]
 @export var animation_player: AnimationPlayer
 var move_animations = ["left", "right", "up", "down"]
 var ded = false
+
+@onready var player_visuals: Node2D = $PlayerVisuals
 
 func _physics_process(_delta: float) -> void:
 	if ded:
