@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://drb074v081kkw"]
+[gd_scene load_steps=29 format=3 uid="uid://drb074v081kkw"]
 
 [ext_resource type="PackedScene" uid="uid://sdg8fd6qs437" path="res://Components/background.tscn" id="1_0f5h7"]
 [ext_resource type="PackedScene" uid="uid://bdf8kk62a3ib0" path="res://Components/player_scene_base.tscn" id="1_b5ayd"]
@@ -6,7 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://dqxyrsrrplpwk" path="res://Components/player_scene_bottom.tscn" id="2_c264a"]
 [ext_resource type="Script" uid="uid://bhi5207kom6gu" path="res://Scripts/play_self_on_load.gd" id="3_8k7wh"]
 [ext_resource type="Script" uid="uid://y1sop7jwvbia" path="res://Scripts/level_spawning.gd" id="4_iufkg"]
+[ext_resource type="AudioStream" uid="uid://cg61mynmd1122" path="res://GAL-DARKBT.WAV" id="5_6xh1p"]
+[ext_resource type="AudioStream" uid="uid://cixavbtdhydlg" path="res://GAL-LITEBT.WAV" id="6_5rbs6"]
 [ext_resource type="PackedScene" uid="uid://dqgcj66pt608p" path="res://Components/test_obstacle.tscn" id="6_qsjrb"]
+[ext_resource type="AudioStream" uid="uid://8j0lqt2tbuaj" path="res://GALDARKBT2-RolandInstruments.WAV" id="7_201fe"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_201fe"]
+font_size = 25
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5lt6y"]
 normal = Vector2(0, 1)
@@ -23,7 +29,7 @@ length = 0.001
 
 [sub_resource type="Animation" id="Animation_8k7wh"]
 resource_name = "Test_Level"
-length = 45.0
+length = 41.66667
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -32,7 +38,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": [{
-"end_offset": 4.144355,
+"end_offset": 8.846205,
 "start_offset": 0.56666666,
 "stream": ExtResource("2_5lt6y")
 }],
@@ -41,7 +47,7 @@ tracks/0/keys = {
 tracks/0/use_blend = true
 tracks/1/type = "method"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("TestLevel/ObstacleSpawner")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -59,11 +65,1195 @@ tracks/1/keys = {
 "method": &"SpawnObstacle"
 }]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TestLevel")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3, 41.633335),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": ["Avoid the obstacles!"],
+"method": &"display_label"
+}, {
+"args": [],
+"method": &"hide_label"
+}, {
+"args": [],
+"method": &"play_next_level"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5rbs6"]
+resource_name = "level2"
+length = 33.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TestLevel/Level2Music")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.73999983,
+"stream": ExtResource("5_6xh1p")
+}],
+"times": PackedFloat32Array(0.03333336)
+}
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TestLevel")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 32.966667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": ["Level 2"],
+"method": &"display_label"
+}, {
+"args": [],
+"method": &"hide_label"
+}, {
+"args": [],
+"method": &"play_next_level"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TestLevel/ObstacleSpawner")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.06666667, 0.26666668, 0.43333337, 0.6333334, 0.8333334, 1, 1.4000001, 1.7666668, 2.2333333, 2.6257083, 3.8666668, 4.3, 4.666667, 5.1000004, 5.8333335, 6.2000003, 6.3333335, 6.6, 6.9000006, 7.033334, 7.3, 7.6333337, 8, 8.366667, 8.733334, 9.6, 10.066667, 10.500001, 10.900001, 11.366667, 11.800001, 12.266667, 12.733334, 13.166668, 13.700001, 14.166667, 14.600001, 15.1, 15.566667, 16, 16.433334, 22.266668, 22.6, 22.9, 23.2, 23.533333, 23.833332, 24.133333, 25.333334, 25.666666, 25.966665, 27.266668, 27.6, 27.9, 29.433334, 29.766666, 30.066666, 30.600002, 30.933334, 31.233334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [300.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [250.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [200.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [150.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [100.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [50.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [0.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-30.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-50.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-60.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-300.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-250.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-200.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-150.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-100.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-50.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-20.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [0.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [30.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [50.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [80.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [100.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [120.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [140.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [150.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-1],
+"method": &"SpawnRandomObstacle"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TestLevel/ObstacleSpawner")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_201fe"]
+resource_name = "intermission1"
+length = 20.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TestLevel/Intermission1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.57,
+"stream": ExtResource("6_5rbs6")
+}],
+"times": PackedFloat32Array(0.033333335)
+}
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TestLevel")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 19.966667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": ["Intermission"],
+"method": &"display_label"
+}, {
+"args": [],
+"method": &"hide_label"
+}, {
+"args": [],
+"method": &"play_next_level"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_xjl2p"]
+resource_name = "level3"
+length = 90.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TestLevel/Level3Music")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.38000003,
+"stream": ExtResource("7_201fe")
+}],
+"times": PackedFloat32Array(0.03333333)
+}
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TestLevel")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 15.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": ["Level 3"],
+"method": &"display_label"
+}, {
+"args": [],
+"method": &"hide_label"
+}, {
+"args": [],
+"method": &"play_final_spawner"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TestLevel/ObstacleSpawner")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335, 0.5, 1, 1.5000001, 2, 2.5000002, 3.0000002, 3.5000002, 4, 4.0666666, 4.6333337, 4.666667, 4.9333334, 4.966666, 5.266667, 5.2999997, 5.5735555, 5.6068883, 5.933334, 5.9666667, 6.433334, 6.4666667, 6.933334, 6.9666667, 7.405068, 7.4384007, 7.540868, 7.5742006, 15.433334, 16.366667, 17.366667, 17.866667, 18.266668, 18.766668, 19.400002, 19.800001, 20.2, 20.900002, 21.500002, 22.16993, 22.304996, 22.533335, 22.933334, 23.066668, 23.300001, 23.7, 23.866669, 24.066668, 24.466667, 24.666668, 24.820938, 25.233335, 25.433334, 25.566668, 25.766668, 25.966667, 26.166668, 26.366667, 26.600002, 26.800001, 27.033335, 27.233334, 27.466667, 27.666666, 27.900002, 28.1, 28.303543, 29.46667, 30.400002, 31.400002, 31.900002, 32.300003, 32.800003, 33.433334, 33.833336, 34.233337, 37.899998, 38.833332, 39.833332, 40.333332, 40.733334, 41.233334, 41.866665, 42.266666, 42.666668, 44.733337, 45.66667, 46.66667, 47.16667, 47.566673, 48.066673, 48.700005, 49.100006, 49.500008, 52.26667, 53.200005, 54.200005, 54.700005, 55.100006, 55.600006, 56.233337, 56.63334, 57.03334, 61.033337, 61.966667, 62.966667, 63.466667, 63.86667, 64.36667, 65, 65.4, 65.8, 68.933334, 69.86667, 70.86667, 71.36667, 71.76667, 72.26667, 72.9, 73.3, 73.700005, 77.36667, 78.3, 79.3, 79.8, 80.200005, 80.700005, 81.333336, 81.73334, 82.13334, 83.466675, 84.40001, 85.40001, 85.90001, 86.30001, 86.80001, 87.43334, 87.83334, 88.233345),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [250.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [225.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [200.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [175.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [150.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [125.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-300.0, 0, true, 400],
+"method": &"SpawnObstacle"
+}, {
+"args": [300.0, 0, true, -400],
+"method": &"SpawnObstacle"
+}, {
+"args": [0.0, 0, true, -150],
+"method": &"SpawnObstacle"
+}, {
+"args": [0.0, 0, true, 150],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [250.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-250.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [220.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-220.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [180.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-180.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [150.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-150.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [120.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-120.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [90.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-90.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [80.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-80.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [70.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-70.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, true, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TestLevel/ObstacleSpawner")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.033333335, 0.5, 1, 1.5000001, 2, 2.5000002, 3.0000002, 3.5000002, 4.0333333, 4.1, 5.1333337, 5.166667, 5.4333334, 5.4666667, 5.7333336, 5.766667, 6.1333337, 6.166667, 6.666667, 6.7000003, 7.166667, 7.2000003, 15.933333, 16.766668, 17.6, 18.066668, 18.533335, 19.2, 19.566668, 20.000002, 20.466667, 21.333334, 21.7, 22.16993, 22.304996, 22.533335, 22.933334, 23.066668, 23.300001, 23.7, 23.866669, 24.066668, 24.466667, 24.666668, 24.820938, 25.233335, 25.433334, 25.566668, 25.766668, 25.966667, 26.166668, 26.366667, 26.600002, 26.800001, 27.033335, 27.233334, 27.466667, 27.666666, 27.900002, 28.1, 28.303543, 29.966667, 30.800003, 31.633335, 32.100002, 32.56667, 33.233337, 33.600002, 34.033337, 34.5, 38.399998, 39.233334, 40.06666, 40.53333, 40.999996, 41.666668, 42.03333, 42.466663, 42.93333, 45.233337, 46.066673, 46.9, 47.36667, 47.833336, 48.500008, 48.86667, 49.300003, 49.76667, 52.76667, 53.600006, 54.433334, 54.9, 55.36667, 56.03334, 56.4, 56.833336, 57.300003, 61.533333, 62.36667, 63.200005, 63.66667, 64.13334, 64.8, 65.16667, 65.600006, 66.066666, 69.433334, 70.26667, 71.1, 71.566666, 72.03333, 72.700005, 73.066666, 73.5, 73.96667, 77.86667, 78.700005, 79.53333, 80, 80.46667, 81.13334, 81.5, 81.933334, 82.4, 83.966675, 84.80001, 85.63334, 86.100006, 86.56667, 87.233345, 87.600006, 88.03334, 88.50001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [-250.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-225.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-200.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-175.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-150.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-125.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [300.0, 0, false, -400],
+"method": &"SpawnObstacle"
+}, {
+"args": [-300.0, 0, false, 400],
+"method": &"SpawnObstacle"
+}, {
+"args": [0.0, 0, false, -150],
+"method": &"SpawnObstacle"
+}, {
+"args": [0.0, 0, false, 150],
+"method": &"SpawnObstacle"
+}, {
+"args": [10.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-10.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [30.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-30.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [50.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-50.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [80.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-80.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [100.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-100.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [120.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-120.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [-280.0, 0, false, 0],
+"method": &"SpawnObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_lp1f3"]
+resource_name = "gameover"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iufkg"]
 _data = {
 &"RESET": SubResource("Animation_5lt6y"),
-&"Test_Level": SubResource("Animation_8k7wh")
+&"Test_Level": SubResource("Animation_8k7wh"),
+&"gameover": SubResource("Animation_lp1f3"),
+&"intermission1": SubResource("Animation_201fe"),
+&"level2": SubResource("Animation_5rbs6"),
+&"level3": SubResource("Animation_xjl2p")
 }
 
 [sub_resource type="Animation" id="Animation_c264a"]
@@ -84,14 +1274,164 @@ tracks/0/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_6xh1p"]
+resource_name = "level2"
+length = 15.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("ObstacleSpawner")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(11, 11.566667),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [-300.0, 0, true, 300],
+"method": &"SpawnObstacle"
+}, {
+"args": [-300.0, 0, false, 400],
+"method": &"SpawnObstacle"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("ObstacleSpawner")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(11, 11.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [300.0, 0, true, -300],
+"method": &"SpawnObstacle"
+}, {
+"args": [300.0, 0, false, -400],
+"method": &"SpawnObstacle"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("ObstacleSpawner")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_ytmxh"]
+resource_name = "intermission1"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ObstacleSpawner")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ObstacleSpawner")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_hctok"]
+resource_name = "level3"
+
+[sub_resource type="Animation" id="Animation_t2vuu"]
+resource_name = "final"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ObstacleSpawner")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [280.0, 0, true, -280],
+"method": &"SpawnObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-280.0, 0, true, 280],
+"method": &"SpawnObstacle"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ObstacleSpawner")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.5000001),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [-280.0, 0, false, 280],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, false, -280],
+"method": &"SpawnObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6xh1p"]
 _data = {
-&"Test_Level": SubResource("Animation_c264a")
+&"Test_Level": SubResource("Animation_c264a"),
+&"final": SubResource("Animation_t2vuu"),
+&"intermission1": SubResource("Animation_ytmxh"),
+&"level2": SubResource("Animation_6xh1p"),
+&"level3": SubResource("Animation_hctok")
 }
 
 [node name="TestScene" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_0f5h7")]
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -133.0
+offset_top = -384.0
+offset_right = 135.0
+offset_bottom = -308.0
+text = "INTERMISSION"
+label_settings = SubResource("LabelSettings_201fe")
+horizontal_alignment = 1
 
 [node name="PlayerParent" parent="." instance=ExtResource("2_c264a")]
 position = Vector2(0, 83)
@@ -130,6 +1470,7 @@ deterministic = true
 libraries = {
 &"": SubResource("AnimationLibrary_iufkg")
 }
+autoplay = "Test_Level"
 script = ExtResource("3_8k7wh")
 
 [node name="Spawner" type="AnimationPlayer" parent="TestLevel"]
@@ -139,6 +1480,12 @@ libraries = {
 autoplay = "Test_Level"
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="TestLevel"]
+
+[node name="Intermission1" type="AudioStreamPlayer" parent="TestLevel"]
+
+[node name="Level2Music" type="AudioStreamPlayer" parent="TestLevel"]
+
+[node name="Level3Music" type="AudioStreamPlayer" parent="TestLevel"]
 
 [node name="ObstacleSpawner" type="Node2D" parent="TestLevel" node_paths=PackedStringArray("bottomNode", "topNode", "spawnParent")]
 script = ExtResource("4_iufkg")

@@ -7,6 +7,8 @@ const JUMP_VELOCITY = -400.0
 var move_animations = ["left", "right", "up", "down"]
 var ded = false
 
+@export var level_player: AnimationPlayer
+
 @onready var player_visuals: Node2D = $PlayerVisuals
 
 func _physics_process(_delta: float) -> void:
@@ -39,3 +41,8 @@ func get_reckt() -> void:
 	set_deferred("col.disabled", true)
 	print("Player died as " + owner.name)
 	animation_player.play("death")
+	level_player = get_node("/root/TestScene/TestLevel")
+	level_player.play("gameover")
+
+func game_over():
+	get_tree().change_scene_to_file("res://Scenes/lose.tscn")

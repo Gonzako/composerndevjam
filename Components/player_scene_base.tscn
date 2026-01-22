@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bdf8kk62a3ib0"]
+[gd_scene load_steps=49 format=3 uid="uid://bdf8kk62a3ib0"]
 
 [ext_resource type="Script" uid="uid://jb8cyklju0ve" path="res://Scripts/player_logic.gd" id="1_xt181"]
 [ext_resource type="Texture2D" uid="uid://dm4xap32u3q03" path="res://sprites/wings.png" id="2_sjwo0"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dhumsx6a1px26" path="res://ImportedAssets/KenneyNL/PNG (Transparent)/star_01.png" id="5_mtkyt"]
 [ext_resource type="Texture2D" uid="uid://3kshl0dohbv" path="res://ImportedAssets/KenneyNL/PNG (Transparent)/star_05.png" id="6_bccsh"]
 [ext_resource type="Texture2D" uid="uid://dn2soo5pk6wmj" path="res://ImportedAssets/KenneyNL/PNG (Transparent)/star_09.png" id="6_l1h8i"]
+[ext_resource type="AudioStream" uid="uid://6dgt1xj6cj6x" path="res://GALDARK-SFX.WAV" id="10_tok6t"]
+[ext_resource type="AudioStream" uid="uid://cocyis4el4eks" path="res://GALAGA-SFX.WAV" id="11_5yr4r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ggyil"]
 
@@ -297,6 +299,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_h71q8"]
 resource_name = "death"
+length = 8.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -345,6 +348,50 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerLogic")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(7.9333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"game_over"
+}]
+}
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("gameover")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 5.7800007,
+"stream": ExtResource("10_tok6t")
+}],
+"times": PackedFloat32Array(0.6666667)
+}
+tracks/5/use_blend = true
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SFX")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 39.049995,
+"start_offset": 12.659998,
+"stream": ExtResource("11_5yr4r")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="Animation" id="Animation_sgt1x"]
 resource_name = "down"
@@ -625,6 +672,7 @@ position = Vector2(0, -15)
 emitting = false
 texture = SubResource("AnimatedTexture_tok6t")
 lifetime = 3.0
+one_shot = true
 explosiveness = 1.0
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_5yr4r")
@@ -633,3 +681,7 @@ process_material = SubResource("ParticleProcessMaterial_5yr4r")
 libraries = {
 &"": SubResource("AnimationLibrary_l6i3b")
 }
+
+[node name="gameover" type="AudioStreamPlayer" parent="."]
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]

@@ -17,7 +17,7 @@ func _ready():
 	else:
 		set_collision_layer(top_collision)
 		set_collision_mask(top_collision)
-		gravity_scale = 1
+		gravity_scale = -gravity_scale
 		sprite.rotation_degrees = 180
 
 func _on_body_entered(body: Node) -> void:
@@ -25,3 +25,6 @@ func _on_body_entered(body: Node) -> void:
 	if body.has_method("get_reckt"):
 		body.get_reckt()
 	pass # Replace with function body.
+
+func _on_visible_on_screen_enabler_2d_screen_exited():
+	queue_free()
