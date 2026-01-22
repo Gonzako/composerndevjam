@@ -1,10 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://evt1t8yuhlfy"]
+[gd_scene load_steps=29 format=3 uid="uid://evt1t8yuhlfy"]
 
 [ext_resource type="PackedScene" uid="uid://gy83xsubdkvk" path="res://Scenes/win.tscn" id="1_phhqy"]
 [ext_resource type="Texture2D" uid="uid://bayokgygxcp2h" path="res://sprites/character1.png" id="2_7p22t"]
 [ext_resource type="Script" path="res://Scripts/sprite_fade.gd" id="3_pdfrk"]
 [ext_resource type="Texture2D" uid="uid://beiofgb6v4pg1" path="res://sprites/character2.png" id="4_infrb"]
 [ext_resource type="Texture2D" uid="uid://dm4xap32u3q03" path="res://sprites/wings.png" id="5_valxx"]
+[ext_resource type="AudioStream" uid="uid://cfrcsguqt8yug" path="res://GALDARK-SFX2.mp3" id="6_valxx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f10aw"]
 atlas = ExtResource("2_7p22t")
@@ -238,3 +239,8 @@ autoplay = "default"
 speed_scale = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="." index="5"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="6"]
+stream = ExtResource("6_valxx")
+autoplay = true
+parameters/looping = true

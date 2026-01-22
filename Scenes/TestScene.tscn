@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://sdg8fd6qs437" path="res://Components/background.tscn" id="1_0f5h7"]
 [ext_resource type="PackedScene" uid="uid://bdf8kk62a3ib0" path="res://Components/player_scene_base.tscn" id="1_b5ayd"]
 [ext_resource type="AudioStream" uid="uid://b2pqqkyq1jt36" path="res://GALAGA-BGM-LongRoadAhead+HardHabitToBreak.mp3" id="2_5lt6y"]
-[ext_resource type="PackedScene" uid="uid://dqxyrsrrplpwk" path="res://Components/player_scene_bottom.tscn" id="2_c264a"]
+[ext_resource type="PackedScene" uid="uid://b4437hxfpfhaq" path="res://Components/player_scene_bottom.tscn" id="2_c264a"]
 [ext_resource type="Script" uid="uid://bhi5207kom6gu" path="res://Scripts/play_self_on_load.gd" id="3_8k7wh"]
 [ext_resource type="Script" uid="uid://y1sop7jwvbia" path="res://Scripts/level_spawning.gd" id="4_iufkg"]
 [ext_resource type="AudioStream" uid="uid://cg61mynmd1122" path="res://GAL-DARKBT.WAV" id="5_6xh1p"]
@@ -76,6 +76,48 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": ["Avoid the obstacles!"],
+"method": &"display_label"
+}, {
+"args": [],
+"method": &"hide_label"
+}, {
+"args": [],
+"method": &"play_next_level"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_lp1f3"]
+resource_name = "gameover"
+
+[sub_resource type="Animation" id="Animation_201fe"]
+resource_name = "intermission1"
+length = 20.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TestLevel/Intermission1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.57,
+"stream": ExtResource("6_5rbs6")
+}],
+"times": PackedFloat32Array(0.033333335)
+}
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TestLevel")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 19.966667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": ["Intermission"],
 "method": &"display_label"
 }, {
 "args": [],
@@ -325,45 +367,6 @@ tracks/3/keys = {
 "times": PackedFloat32Array(),
 "transitions": PackedFloat32Array(),
 "values": []
-}
-
-[sub_resource type="Animation" id="Animation_201fe"]
-resource_name = "intermission1"
-length = 20.0
-tracks/0/type = "audio"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TestLevel/Intermission1")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.57,
-"stream": ExtResource("6_5rbs6")
-}],
-"times": PackedFloat32Array(0.033333335)
-}
-tracks/0/use_blend = true
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TestLevel")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 3, 19.966667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": ["Intermission"],
-"method": &"display_label"
-}, {
-"args": [],
-"method": &"hide_label"
-}, {
-"args": [],
-"method": &"play_next_level"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_xjl2p"]
@@ -1243,9 +1246,6 @@ tracks/3/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_lp1f3"]
-resource_name = "gameover"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iufkg"]
 _data = {
 &"RESET": SubResource("Animation_5lt6y"),
@@ -1270,6 +1270,90 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
+"method": &"SpawnRandomObstacle"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_t2vuu"]
+resource_name = "final"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ObstacleSpawner")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [280.0, 0, true, -280],
+"method": &"SpawnObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [-280.0, 0, true, 280],
+"method": &"SpawnObstacle"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ObstacleSpawner")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.5000001),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [-280.0, 0, false, 280],
+"method": &"SpawnObstacle"
+}, {
+"args": [280.0, 0, false, -280],
+"method": &"SpawnObstacle"
+}, {
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ytmxh"]
+resource_name = "intermission1"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ObstacleSpawner")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
+"method": &"SpawnRandomObstacle"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ObstacleSpawner")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0],
+"method": &"SpawnRandomObstacle"
+}, {
+"args": [1],
 "method": &"SpawnRandomObstacle"
 }]
 }
@@ -1323,92 +1407,8 @@ tracks/2/keys = {
 "values": []
 }
 
-[sub_resource type="Animation" id="Animation_ytmxh"]
-resource_name = "intermission1"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ObstacleSpawner")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [0],
-"method": &"SpawnRandomObstacle"
-}, {
-"args": [1],
-"method": &"SpawnRandomObstacle"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ObstacleSpawner")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [0],
-"method": &"SpawnRandomObstacle"
-}, {
-"args": [1],
-"method": &"SpawnRandomObstacle"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_hctok"]
 resource_name = "level3"
-
-[sub_resource type="Animation" id="Animation_t2vuu"]
-resource_name = "final"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ObstacleSpawner")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [280.0, 0, true, -280],
-"method": &"SpawnObstacle"
-}, {
-"args": [1],
-"method": &"SpawnRandomObstacle"
-}, {
-"args": [-280.0, 0, true, 280],
-"method": &"SpawnObstacle"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ObstacleSpawner")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 1.5000001),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [-280.0, 0, false, 280],
-"method": &"SpawnObstacle"
-}, {
-"args": [280.0, 0, false, -280],
-"method": &"SpawnObstacle"
-}, {
-"args": [0],
-"method": &"SpawnRandomObstacle"
-}]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6xh1p"]
 _data = {
@@ -1467,6 +1467,7 @@ shape = SubResource("WorldBoundaryShape2D_b5ayd")
 
 [node name="TestLevel" type="AnimationPlayer" parent="."]
 deterministic = true
+audio_max_polyphony = 2
 libraries = {
 &"": SubResource("AnimationLibrary_iufkg")
 }
@@ -1474,18 +1475,19 @@ autoplay = "Test_Level"
 script = ExtResource("3_8k7wh")
 
 [node name="Spawner" type="AnimationPlayer" parent="TestLevel"]
+audio_max_polyphony = 1
 libraries = {
 &"": SubResource("AnimationLibrary_6xh1p")
 }
 autoplay = "Test_Level"
 
-[node name="LevelMusic" type="AudioStreamPlayer" parent="TestLevel"]
+[node name="LevelMusic" type="AudioStreamPlayer" parent="TestLevel" groups=["Sounds"]]
 
-[node name="Intermission1" type="AudioStreamPlayer" parent="TestLevel"]
+[node name="Intermission1" type="AudioStreamPlayer" parent="TestLevel" groups=["Sounds"]]
 
-[node name="Level2Music" type="AudioStreamPlayer" parent="TestLevel"]
+[node name="Level2Music" type="AudioStreamPlayer" parent="TestLevel" groups=["Sounds"]]
 
-[node name="Level3Music" type="AudioStreamPlayer" parent="TestLevel"]
+[node name="Level3Music" type="AudioStreamPlayer" parent="TestLevel" groups=["Sounds"]]
 
 [node name="ObstacleSpawner" type="Node2D" parent="TestLevel" node_paths=PackedStringArray("bottomNode", "topNode", "spawnParent")]
 script = ExtResource("4_iufkg")

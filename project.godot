@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 window/size/viewport_width=600
 window/size/viewport_height=1066
 
+[global_group]
+
+Sounds=""
+
 [input]
 
 p2_right={

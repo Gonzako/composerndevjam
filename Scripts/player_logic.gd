@@ -45,4 +45,5 @@ func get_reckt() -> void:
 	level_player.play("gameover")
 
 func game_over():
+	get_tree().call_group("Sounds","stop")
 	get_tree().change_scene_to_file("res://Scenes/lose.tscn")

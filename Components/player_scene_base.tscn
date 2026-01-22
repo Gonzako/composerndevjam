@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dm4xap32u3q03" path="res://sprites/wings.png" id="2_sjwo0"]
 [ext_resource type="Texture2D" uid="uid://bayokgygxcp2h" path="res://sprites/character1.png" id="2_xt181"]
 [ext_resource type="Script" uid="uid://lx7n7oou575r" path="res://Scripts/trail.gd" id="3_f10aw"]
-[ext_resource type="Script" uid="uid://qiq20tin6iua" path="res://Scripts/sprite_fade.gd" id="3_h71q8"]
+[ext_resource type="Script" path="res://Scripts/sprite_fade.gd" id="3_h71q8"]
 [ext_resource type="Texture2D" uid="uid://beiofgb6v4pg1" path="res://sprites/character2.png" id="3_tok6t"]
 [ext_resource type="Texture2D" uid="uid://dhumsx6a1px26" path="res://ImportedAssets/KenneyNL/PNG (Transparent)/star_01.png" id="5_mtkyt"]
 [ext_resource type="Texture2D" uid="uid://3kshl0dohbv" path="res://ImportedAssets/KenneyNL/PNG (Transparent)/star_05.png" id="6_bccsh"]
@@ -682,6 +682,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_l6i3b")
 }
 
-[node name="gameover" type="AudioStreamPlayer" parent="."]
+[node name="gameover" type="AudioStreamPlayer" parent="." groups=["Sounds"]]
 
-[node name="SFX" type="AudioStreamPlayer" parent="."]
+[node name="SFX" type="AudioStreamPlayer" parent="." groups=["Sounds"]]

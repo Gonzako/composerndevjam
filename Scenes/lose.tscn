@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://vgj08ata1je6"]
+[gd_scene load_steps=5 format=3 uid="uid://vgj08ata1je6"]
 
 [ext_resource type="Script" uid="uid://djn3fwfnou2ea" path="res://Scripts/end_screen.gd" id="1_g0cl2"]
 [ext_resource type="PackedScene" uid="uid://sdg8fd6qs437" path="res://Components/background.tscn" id="2_04a82"]
+[ext_resource type="AudioStream" uid="uid://dqbscalr5pkdx" path="res://GALDARKMUS-GlassFlute+LazerLead.mp3" id="3_04a82"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3mm25"]
 font_size = 50
@@ -30,4 +31,10 @@ offset_right = 388.0
 offset_bottom = 604.0
 text = "Play again"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_04a82")
+autoplay = true
+parameters/looping = true
+
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
